@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo11.mapper.HelloMapper">
+	<insert id="insertTest"
+		parameterType="com.example.demo11.entity.mealEntity"
+		useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+		insert into meal.meal1(name,price)
+		values(#{name},#{price})
+	</insert>
+
+	<select id="findTestById"
+		parameterType="com.example.demo11.entity.mealEntity"
+		resultType="com.example.demo11.entity.mealEntity">
+		SELECT * FROM meal.meal1 where id = #{id};
+	</select>
+
+	<select id="findTestAll"
+		resultType="com.example.demo11.entity.mealEntity">
+		SELECT * FROM meal.meal1;
+	</select>
+
+	<update id="updataTest"
+		parameterType="com.example.demo11.entity.mealEntity">
+		UPDATE meal.meal1
+		SET price= #{price}
+		WHERE id= #{id};
+	</update>
+
+	<delete id="deleteTest" parameterType="Integer">
+		DELETE FROM meal.meal1
+		WHERE id= #{id}
+	</delete>
+</mapper>
